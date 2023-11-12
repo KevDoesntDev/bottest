@@ -19,20 +19,6 @@ std::shared_ptr<OdomChassisController> chass =
 		.buildOdometry();
 std::shared_ptr<SkidSteerModel> thing = std::dynamic_pointer_cast<SkidSteerModel>(chass->getModel());
 
-// std::shared_ptr<AsyncMotionProfileController> profileController = 
-//   AsyncMotionProfileControllerBuilder()
-//     .withLimits({
-//       1.0, // Maximum linear velocity of the Chassis in m/s
-//       2.0, // Maximum linear acceleration of the Chassis in m/s/s
-//       10.0 // Maximum linear jerk of the Chassis in m/s/s/s
-//     })
-//     .withOutput(chassis)
-//     .buildMotionProfileController();
-
-
-
-
-
 pros::Motor left_front_motor(2, true); // port 1, not reversed
 pros::Motor left_back_motor(4, true); // port 2, not reversed
 pros::Motor right_front_motor(1, false); // port 3, reversed
@@ -165,59 +151,7 @@ void autonomous()
 {
 	chassis.moveTo(10, 0, 1000);
 
-	// chassis->setState({0_in, 0_in, 0_deg});
-
-	// // chassis->moveDistance(1_ft);
-
-	// intake.moveVoltage(-12000);
-	// chassis->moveDistance(2_ft);
-	// chassis->moveDistance(-2_ft);
-
-	// chassis->turnAngle(-45_deg);
-	// chassis->moveDistance(-22_in);
-	// pistonA.set_value(true);
-	// chassis->turnAngle(-45_deg);
-	// chassis->moveDistance(-20_in);
-
-	// chassis->moveDistance(12_in);
-	// chassis->turnAngle(-180_deg);
-	// intake.moveVoltage(12000);
-	// chassis->moveDistance(12_in);
-
-	// chassis->turnAngle(-90_deg);
-
-
-
-	//drivetrain->driveVectorVoltage(12000, 0);
-
-	// intake.moveVelocity(-600);
-	// drivetrain->driveVectorVoltage(-4000, 0);
-	// pros::delay(500);
-	// drivetrain->stop();
-	// chassis->setMaxVelocity(140);
-	// chassis->moveDistance(3.9_ft);
-	// chassis->setMaxVelocity(75);
-	// chassis->turnAngle(100_deg);
-	// drivetrain->driveVectorVoltage(1000, 0);
-	// pros::delay(1000);
-	// drivetrain->stop();
-	// intake.moveVelocity(600);
-	// pros::delay(100);
-	// intake.moveVelocity(0);
-	// chassis->setMaxVelocity(140);
-	// chassis->moveDistance(-6_in);
-	// intake.moveVelocity(-600);
-	// chassis->setMaxVelocity(75);
-	// chassis->turnAngle(-235_deg);
-	// chassis->setMaxVelocity(140);
-	// chassis->moveDistance(1.8_ft);
-	// chassis->setMaxVelocity(75);
-	// chassis->turnAngle(195_deg);
-	// intake.moveVelocity(0);
-	// piston.set_value(true);
-	// chassis->setMaxVelocity(75);
-	// chassis->turnAngle(15_deg);
-	// drivetrain->driveVectorVoltage(10000, 0);
+	
 }
 
 /**
