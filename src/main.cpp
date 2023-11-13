@@ -47,10 +47,10 @@ lemlib::OdomSensors_t sensors {
  
 // forward/backward PID
 lemlib::ChassisController_t lateralController {
-    10, // kP
+    80, // kP
     0, // kD
     1, // smallErrorRange
-    100, // smallErrorTimeout
+    1000, // smallErrorTimeout
     3, // largeErrorRange
     500, // largeErrorTimeout
     5 // slew rate
@@ -58,10 +58,10 @@ lemlib::ChassisController_t lateralController {
  
 // turning PID
 lemlib::ChassisController_t angularController {
-    1, // kP
-    0.01, // kD
+    .8, // kP
+    0, // kD
     1, // smallErrorRange
-    100, // smallErrorTimeout
+    10, // smallErrorTimeout
     3, // largeErrorRange
     500, // largeErrorTimeout
     40 // slew rate
@@ -147,8 +147,9 @@ void competition_initialize() {}
 
 void autonomous()
 {
-	// chassis.moveTo(0, 10, 1000);
-    chassis.turnTo(30, 0, 1000);
+	chassis.moveTo(0, 10, 1000);
+    // chassis.turnTo(30, 0, 1000);
+    // chassis.turnTo(0, 0, 1000);
 }
 
 /**
