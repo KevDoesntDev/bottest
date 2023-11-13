@@ -19,10 +19,10 @@ std::shared_ptr<OdomChassisController> chass =
 		.buildOdometry();
 std::shared_ptr<SkidSteerModel> thing = std::dynamic_pointer_cast<SkidSteerModel>(chass->getModel());
 
-pros::Motor left_front_motor(2, true); // port 1, not reversed
-pros::Motor left_back_motor(4, true); // port 2, not reversed
-pros::Motor right_front_motor(1, false); // port 3, reversed
-pros::Motor right_back_motor(3, false); // port 4, reversed
+pros::Motor left_front_motor(1, false); // port 1, not reversed
+pros::Motor left_back_motor(3, false); // port 2, not reversed
+pros::Motor right_front_motor(2, true); // port 3, reversed
+pros::Motor right_back_motor(4, true); // port 4, reversed
  
 // drivetrain motor groups
 pros::MotorGroup left_side_motors({left_front_motor, left_back_motor});
@@ -47,7 +47,7 @@ lemlib::OdomSensors_t sensors {
  
 // forward/backward PID
 lemlib::ChassisController_t lateralController {
-    50, // kP
+    10, // kP
     0, // kD
     1, // smallErrorRange
     100, // smallErrorTimeout
@@ -58,8 +58,8 @@ lemlib::ChassisController_t lateralController {
  
 // turning PID
 lemlib::ChassisController_t angularController {
-    0, // kP
-    0, // kD
+    1, // kP
+    0.01, // kD
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange
@@ -67,10 +67,8 @@ lemlib::ChassisController_t angularController {
     40 // slew rate
 };
  
- 
 // create the chassis
 lemlib::Chassis chassis(drivetrain, lateralController, angularController, sensors);
-
 
 Motor intake(10, false, AbstractMotor::gearset::blue, AbstractMotor::encoderUnits::degrees);
 MotorGroup hang(
@@ -149,9 +147,8 @@ void competition_initialize() {}
 
 void autonomous()
 {
-	chassis.moveTo(10, 0, 1000);
-
-	
+	// chassis.moveTo(0, 10, 1000);
+    chassis.turnTo(30, 0, 1000);
 }
 
 /**
